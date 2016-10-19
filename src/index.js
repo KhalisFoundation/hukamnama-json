@@ -3,6 +3,8 @@
 import http from 'http';
 import PDFJS from 'pdfjs-dist';
 
+const SGPC_URL = `http://old.sgpc.net/hukumnama/jpeg%20hukamnama/hukamnama.pdf`;
+
 module.exports = function hukamJS (options = {  }) {
   const injectNewLine = str => [
     e => e.endsWith("TODAY'S HUKAMNAMA FROM SRI DARBAR SAHIB, Sri Amritsar. "),

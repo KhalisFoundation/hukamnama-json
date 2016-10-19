@@ -33,6 +33,9 @@ hukamnama()                           // Returns a promise
 * [ ] Ensure it's `battle-tested`.
 * [ ] Ensure it works with multiple-page pdf.
 
+## 0.0.4
+* [x] Fix #1
+
 ## 0.0.3
 * [x] Use babel for better backward compatibility 
 

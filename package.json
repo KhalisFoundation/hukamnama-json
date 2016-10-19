@@ -1,6 +1,6 @@
 {
   "name": "hukamnama-json",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "NodeJS module that fetches Hukamnama from Harimandir Sahib, Amritsar via SGPC's PDF",
   "main": "index.js",
   "scripts": {

@@ -10,6 +10,8 @@ var _pdfjsDist2 = _interopRequireDefault(_pdfjsDist);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var SGPC_URL = 'http://old.sgpc.net/hukumnama/jpeg%20hukamnama/hukamnama.pdf';
+
 module.exports = function hukamJS() {
   var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
