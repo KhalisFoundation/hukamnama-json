@@ -1,10 +1,11 @@
 {
   "name": "hukamnama-json",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "NodeJS module that fetches Hukamnama from Harimandir Sahib, Amritsar via SGPC's PDF",
   "main": "index.js",
   "scripts": {
-    "test": "node test"
+    "test": "node test",
+    "build": "babel src/index.js --out-file index.js"
   },
   "author": "bogas04",
   "repository": {
@@ -14,5 +15,9 @@
   "license": "MIT",
   "dependencies": {
     "pdfjs-dist": "^1.6.258"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.16.0",
+    "babel-preset-es2015": "^6.16.0"
   }
 }

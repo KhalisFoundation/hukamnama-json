@@ -1,4 +1,4 @@
-# 🙏🏻 🙏🏼 🙏🏽 🙏🏾 🙏🏿  hukamnama-json
+## 🙏🏻 🙏🏼 🙏🏽 🙏🏾 🙏🏿  hukamnama-json
 
 NodeJS module that fetches Hukamnama from Harimandir Sahib, Amritsar via [SGPC's PDF](http://old.sgpc.net/hukumnama/jpeg%20hukamnama/hukamnama.pdf)
 
@@ -33,6 +33,9 @@ hukamnama()                           // Returns a promise
 * [ ] Ensure it's `battle-tested`.
 * [ ] Ensure it works with multiple-page pdf.
 
+## 0.0.3
+* Use babel for better backward compatibility 
+
 ## 0.0.1 (Initial Release)
 * [x] Use rudimentary text parsing to extract.
   * [x] entire content.
@@ -51,6 +54,7 @@ cd hukamnama.json
 
 # Build
 npm i
+npm run build
 
 # Test
 npm test
