@@ -34,7 +34,7 @@ hukamnama()                           // Returns a promise
 * [ ] Ensure it works with multiple-page pdf.
 
 ## 0.0.3
-* Use babel for better backward compatibility 
+* [x] Use babel for better backward compatibility 
 
 ## 0.0.1 (Initial Release)
 * [x] Use rudimentary text parsing to extract.
