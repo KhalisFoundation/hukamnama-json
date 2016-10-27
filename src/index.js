@@ -7,7 +7,7 @@ const SGPC_URL = `http://old.sgpc.net/hukumnama/sgpconlinehukamnama.asp`;
 module.exports = (options = {  }) => new Promise((resolve, reject) => dom.env(SGPC_URL, (err, { document }) => {
   if (err) reject(err);
   try { 
-    const cleanTable = table => table.textContent.replace(/[\t\r\n]/g, '').trim().slice(0, 100);
+    const cleanTable = table => table.textContent.replace(/[\t\r\n]/g, '').trim();
     const tables = [...document.querySelectorAll('table')].splice(1).map(cleanTable);
     const [ gurbani, gurbaniAng, punjabi, english, englishAng ] = tables;
 
