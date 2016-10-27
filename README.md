@@ -1,6 +1,6 @@
 ## 🙏🏻 🙏🏼 🙏🏽 🙏🏾 🙏🏿  hukamnama-json
 
-NodeJS module that fetches Hukamnama from Harimandir Sahib, Amritsar via [SGPC's PDF](http://old.sgpc.net/hukumnama/jpeg%20hukamnama/hukamnama.pdf)
+NodeJS module that fetches Hukamnama from Harimandir Sahib, Amritsar via [SGPC](http://old.sgpc.net/hukumnama/sgpconlinehukamnama.asp)
 
 # Installation
 
@@ -29,9 +29,12 @@ hukamnama()                           // Returns a promise
 * [ ] I don't know `¯\_(ツ)_/¯`, why don't you [suggest](https://github.com/bogas04/hukamnama-json/issues/new)?
 
 ## 0.5.0
-* [ ] Extract date of hukamnama.
 * [ ] Ensure it's `battle-tested`.
-* [ ] Ensure it works with multiple-page pdf.
+* [ ] Make it universal
+
+### 0.1.6
+* [x] Extract date of hukamnama.
+* [x] Ensure it works with multiple-page pdf.
 
 ## 0.0.4
 * [x] Fix #1
