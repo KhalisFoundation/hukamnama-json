@@ -1,102 +1,47 @@
 'use strict';
 
-var _http = require('http');
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-var _http2 = _interopRequireDefault(_http);
+var _jsdom = require('jsdom');
 
-var _pdfjsDist = require('pdfjs-dist');
-
-var _pdfjsDist2 = _interopRequireDefault(_pdfjsDist);
+var _jsdom2 = _interopRequireDefault(_jsdom);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var SGPC_URL = 'http://old.sgpc.net/hukumnama/jpeg%20hukamnama/hukamnama.pdf';
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
-module.exports = function hukamJS() {
+var SGPC_URL = 'http://old.sgpc.net/hukumnama/sgpconlinehukamnama.asp';
+
+module.exports = function () {
   var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-  var injectNewLine = function injectNewLine(str) {
-    return [function (e) {
-      return e.endsWith("TODAY'S HUKAMNAMA FROM SRI DARBAR SAHIB, Sri Amritsar. ");
-    }, function (e) {
-      return e.endsWith(". IST] ");
-    }, function (e) {
-      return (/, \d{4}$/.test(e) && (str = '\n' + str)
-      );
-    }, function (e) {
-      return e.startsWith('(AMg:') && (str = '\n' + str);
-    }, function (e) {
-      return e.startsWith('English Translation') && (str = '\n' + str);
-    }, function (e) {
-      return e.indexOf('Nanakshahi') > 0 && (str = '\n' + str);
-    }].some(function (condition) {
-      return condition(str);
-    }) ? str + '\n' : str;
-  };
-
   return new Promise(function (resolve, reject) {
-    return _http2.default.get(SGPC_URL, function (res) {
-      var buff = [];
+    return _jsdom2.default.env(SGPC_URL, function (err, _ref) {
+      var document = _ref.document;
 
-      res.on('data', function (chunk) {
-        return buff.push(chunk);
-      });
+      if (err) reject(err);
+      try {
+        var cleanTable = function cleanTable(table) {
+          return table.textContent.replace(/[\t\r\n]/g, '').trim().slice(0, 100);
+        };
+        var tables = [].concat(_toConsumableArray(document.querySelectorAll('table'))).splice(1).map(cleanTable);
 
-      res.on('end', function () {
-        return _pdfjsDist2.default.getDocument(new Buffer.concat(buff)).then(function (pdf) {
-          return pdf.getPage(1);
-        }).then(function (page) {
-          return page.getTextContent();
-        }).then(function (_ref) {
-          var _ref$items = _ref.items;
-          var items = _ref$items === undefined ? [] : _ref$items;
+        var _tables = _slicedToArray(tables, 5),
+            gurbani = _tables[0],
+            gurbaniAng = _tables[1],
+            punjabi = _tables[2],
+            english = _tables[3],
+            englishAng = _tables[4];
 
-          var content = '',
-              gurakhr = '',
-              punjabi = '',
-              english = '',
-              ang = 0;
-
-          var gurakhrBegan = false,
-              gurakhrEnded = false;
-          var punjabiBegan = false,
-              punjabiEnded = false;
-          var englishBegan = false,
-              englishEnded = false;
-
-          items.forEach(function (_ref2) {
-            var str = _ref2.str;
-
-            content += injectNewLine(str);
-
-            if (str.startsWith('(AMg:')) {
-              gurakhrEnded = true;
-              punjabiBegan = true;
-            }
-
-            if (gurakhrBegan && !gurakhrEnded) gurakhr += str;
-            if (punjabiBegan && !punjabiEnded) punjabi += str;
-            if (englishBegan && !englishEnded) english += str;
-
-            if (str.startsWith('English Translation')) {
-              punjabiEnded = true;
-              englishBegan = true;
-            }
-
-            if (str.endsWith(' IST] ')) {
-              gurakhrBegan = true;
-            }
-
-            if (str.indexOf('(Page:') > 0) {
-              ang = parseInt(/\(Page: ([\d ]+)/.exec(str)[1]);
-            }
-          });
-
-          resolve({ content: content, ang: ang, gurakhr: gurakhr, punjabi: punjabi, english: english });
-        }).catch(function (err) {
-          return reject(err);
+        resolve({
+          content: tables.join('\n'),
+          gurbani: gurbani, punjabi: punjabi, english: english,
+          ang: parseInt(/\(Page: *([\d ]+)/.exec(englishAng)[1]),
+          date: document.querySelector('font[face="Georgia, Times New Roman, Times, serif"]').textContent.trim().slice(1, -1),
+          url: SGPC_URL
         });
-      });
+      } catch (e) {
+        reject(e);
+      }
     });
   });
 };
