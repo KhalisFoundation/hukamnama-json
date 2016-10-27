@@ -18,7 +18,7 @@ import hukamnama from 'hukamnama';    // ES2015
 
 hukamnama()                           // Returns a promise
 .then(hukam => {
-  let { ang, content, gurakhr, punjabi, english } = hukam;
+  let { ang, content, gurbani, punjabi, english } = hukam;
   console.log(ang, content, gurakhr, punjabi, english);
 })
 .catch(error => console.log(errror));

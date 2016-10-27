@@ -21,7 +21,7 @@ module.exports = function () {
       if (err) reject(err);
       try {
         var cleanTable = function cleanTable(table) {
-          return table.textContent.replace(/[\t\r\n]/g, '').trim().slice(0, 100);
+          return table.textContent.replace(/[\t\r\n]/g, '').trim();
         };
         var tables = [].concat(_toConsumableArray(document.querySelectorAll('table'))).splice(1).map(cleanTable);
 
