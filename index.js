@@ -18,7 +18,6 @@ module.exports = function () {
     return _jsdom2.default.env(SGPC_URL, function (err, _ref) {
       var document = _ref.document;
 
-      if (err) reject(err);
       try {
         var cleanTable = function cleanTable(table) {
           return table.textContent.replace(/[\t\r\n]/g, '').trim();
@@ -35,7 +34,7 @@ module.exports = function () {
         resolve({
           content: tables.join('\n'),
           gurbani: gurbani, punjabi: punjabi, english: english,
-          ang: parseInt(/\(Page: *([\d ]+)/.exec(englishAng)[1]),
+          ang: parseInt(/Page:[ ]*([\d ]+)/.exec(englishAng)[1]),
           date: document.querySelector('font[face="Georgia, Times New Roman, Times, serif"]').textContent.trim().slice(1, -1),
           url: SGPC_URL
         });
