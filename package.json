@@ -1,6 +1,6 @@
 {
   "name": "hukamnama-json",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "NodeJS module that fetches Hukamnama from Harimandir Sahib, Amritsar via SGPC's PDF",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
   "author": "bogas04",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bogas04/hukamnama-json"
+    "url": "https://github.com/KhalisFoundation/hukamnama-json"
   },
   "license": "MIT",
   "dependencies": {
