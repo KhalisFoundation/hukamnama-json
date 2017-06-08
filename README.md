@@ -21,7 +21,7 @@ hukamnama()                           // Returns a promise
   let { ang, content, gurbani, punjabi, english } = hukam;
   console.log(ang, content, gurakhr, punjabi, english);
 })
-.catch(error => console.log(errror));
+.catch(error => console.log(error));
 ```
 # Changelog
 
