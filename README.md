@@ -13,15 +13,34 @@ npm i hukamnama-json
 # Usage
 
 ```javascript
-var hukamnama = require('hukamnama'); // ES5
-import hukamnama from 'hukamnama';    // ES2015
+// CJS import
+var hukamnama = require('hukamnama');
 
-hukamnama()                           // Returns a promise
-.then(hukam => {
-  let { ang, content, gurbani, punjabi, english } = hukam;
-  console.log(ang, content, gurakhr, punjabi, english);
-})
-.catch(error => console.log(error));
+// ES2015 import
+import hukamnama from 'hukamnama';    
+
+// ES2015 (arrow-functions)
+function onReady () {
+  hukamnama()
+    .then(({ ang, content, gurbani, punjabi, english }) =>
+      console.log(ang, content, gurakhr, punjabi, english);
+    )
+    .catch(error => console.log(error))
+  ;
+}
+
+// ES2017 (async-await)
+async function onReady () {
+  try {
+    const hukam = await hukamnama();
+    const { ang, content, gurbani, punjabi, english } = hukam;
+    console.log(ang, content, gurakhr, punjabi, english);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+
 ```
 # Changelog
 
