@@ -25,5 +25,6 @@ module.exports = () => new Promise((resolve, reject) => {
       } catch (e) {
         reject(e);
       }
-    });
+    })
+    .catch(e => reject);
 });
