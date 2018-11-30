@@ -4,9 +4,10 @@
   "description": "NodeJS module that fetches Hukamnama from Harimandir Sahib, Amritsar via SGPC's website",
   "main": "index.js",
   "scripts": {
-    "test": "npm run build && node test",
+    "test": "jest --no-cache",
     "build": "babel src/index.js --out-file index.js --presets=@babel/env"
   },
+  "browserslist": "> 1%",
   "author": "bogas04",
   "repository": {
     "type": "git",
@@ -14,11 +15,15 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@babel/polyfill": "^7.0.0",
     "jsdom": "^12.2.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
     "@babel/core": "^7.1.2",
-    "@babel/preset-env": "^7.1.0"
+    "@babel/preset-env": "^7.1.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "jest": "^23.4.1"
   }
 }
