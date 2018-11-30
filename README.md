@@ -4,7 +4,7 @@ NodeJS module that fetches Hukamnama from Harimandir Sahib, Amritsar via [SGPC](
 
 # Installation
 
-Requires Node v5+ 
+Requires Node v8+ 
 
 ```bash
 npm i hukamnama-json
