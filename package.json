@@ -1,11 +1,12 @@
 {
   "name": "hukamnama-json",
-  "version": "0.1.9",
+  "version": "0.5.0",
   "description": "NodeJS module that fetches Hukamnama from Harimandir Sahib, Amritsar via SGPC's website",
   "main": "index.js",
   "scripts": {
     "test": "jest --no-cache",
-    "build": "babel src/index.js --out-file index.js --presets=@babel/env"
+    "build": "babel src/index.js --out-file index.js --presets=@babel/env",
+    "prepublish": "npm run build"
   },
   "browserslist": "> 1%",
   "author": "bogas04",

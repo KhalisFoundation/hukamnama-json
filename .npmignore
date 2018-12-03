@@ -1,1 +1,8 @@
 src
+.vscode
+.babelrc
+.editorconfig
+.eslintignore
+.eslintrc
+.gitignore
+test.js
