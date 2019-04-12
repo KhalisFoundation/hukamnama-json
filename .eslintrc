@@ -1,10 +1,12 @@
 {
-  "extends": "airbnb-base",
+  "extends": ["airbnb-base", "prettier"],
   "env": {
     "jest": true,
     "node": true
   },
+  "plugins": ["prettier"],
   "rules": {
+    "prettier/prettier": ["error"],
     "comma-dangle": [
       "error",
       {
