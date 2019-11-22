@@ -1,12 +1,15 @@
 import '@babel/polyfill';
 import { JSDOM } from 'jsdom';
+import request from 'request';
 
 const SGPC_URL = 'http://old.sgpc.net/hukumnama/sgpconlinehukamnama.asp';
+const REQUEST_ENCODING = 'utf-8';
 
 const hukamnama = async () => {
-  const dom = await JSDOM.fromURL(SGPC_URL)
-  const { document } = dom.window;
   try {
+    const res = await request({ uri: SGPC_URL, encoding: REQUEST_ENCODING });
+    const dom = new JSDOM(res);
+    const { document } = dom.window;
     const cleanTable = table => table.textContent.replace(/[\t\r\n]/g, '').trim();
     const tables = [...document.querySelectorAll('table')].splice(1).map(cleanTable);
     const [gurbani, gurbaniAng, punjabi, english, englishAng] = tables;

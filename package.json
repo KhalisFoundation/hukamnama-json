@@ -1,6 +1,6 @@
 {
   "name": "hukamnama-json",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "NodeJS module that fetches Hukamnama from Harimandir Sahib, Amritsar via SGPC's website",
   "main": "index.js",
   "scripts": {
@@ -24,7 +24,7 @@
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^23.6.0",
-    "jest": "^23.4.1"
+    "babel-jest": "^25.0.0",
+    "jest": "^25.0.0"
   }
 }
