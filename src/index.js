@@ -19,7 +19,8 @@ const hukamnama = async () => {
       gurbani,
       punjabi,
       english,
-      ang: parseInt(/Page[ ]*:[ ]*([\d ]+)/.exec(englishAng)[1], 10),
+    // split at page, get the string after Page, and then remove the paren from it
+      ang: parseInt(englishAng.split(/Page*/)[1].replace("\)", ''), 10),
       date: document.querySelector('font[face="Georgia, Times New Roman, Times, serif"]').textContent.trim().slice(1, -1),
       url: SGPC_URL
     };
