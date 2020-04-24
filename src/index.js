@@ -19,7 +19,7 @@ const hukamnama = async () => {
       gurbani,
       punjabi,
       english,
-      ang: parseInt(/Page[ ]*:[ ]*([\d ]+)/.exec(englishAng)[1], 10),
+      ang: parseInt(/Page[ ]*:?[ ]*([\d ]+)/.exec(englishAng)[1], 10),
       date: document.querySelector('font[face="Georgia, Times New Roman, Times, serif"]').textContent.trim().slice(1, -1),
       url: SGPC_URL
     };
