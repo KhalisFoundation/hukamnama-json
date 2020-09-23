@@ -21,7 +21,8 @@ const hukamnama = async () => {
       english,
       ang: parseInt(/Page[ ]*:?[ ]*([\d ]+)/.exec(englishAng)[1], 10),
       date: document.querySelector('font[face="Georgia, Times New Roman, Times, serif"]').textContent.trim().slice(1, -1),
-      url: SGPC_URL
+      url: SGPC_URL,
+      audio: 'http://old.sgpc.net/hukumnama/jpeg%20hukamnama/hukamnama.mp3'
     };
   } catch (e) {
     throw e;
